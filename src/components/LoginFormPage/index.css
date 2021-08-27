@@ -1,0 +1,96 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 10px;
+  background-color: #0f172a;
+}
+.input-field {
+  margin: 10px;
+  width: 100%;
+}
+.input {
+  width: 246px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  outline: none;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+.login-page-heading {
+  color: #ffffff;
+}
+.button {
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+  padding: 10px;
+  margin: 10px;
+  outline: none;
+  cursor: pointer;
+  background-color: #0b69ff;
+  color: #ffffff;
+  font-weight: bold;
+}
+.sm-website-logo {
+  width: 200px;
+  margin: 10px;
+}
+.login-img {
+  width: 200px;
+  margin: 10px;
+}
+.website-logo {
+  display: none;
+}
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.error-text {
+  color: red;
+  margin: 10px;
+  font-size: 10px;
+}
+.input-label {
+  color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .sm-website-logo {
+    display: none;
+  }
+
+  .login-form-container {
+    width: 30vw;
+    border-radius: 10px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0px 4px 16px rgba(126, 133, 142, 0.16);
+  }
+  .login-container {
+    flex-direction: row;
+    justify-content: center;
+    background-color: #0f172a;
+  }
+  .login-img {
+    width: 450px;
+  }
+  .website-logo {
+    width: 300px;
+    margin: 10px;
+    display: flex;
+  }
+}
