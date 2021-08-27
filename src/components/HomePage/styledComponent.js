@@ -51,3 +51,40 @@ export const UploadButton = styled.button`
   color: #ffffff;
   font-weight: bold;
 `
+export const DataRecordsContainer = styled.ul`
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+export const DataRecordItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: #ffffff;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.06);
+`
+
+export const DataRecordTitle = styled.h1`
+  font-size: 14px;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+`
+
+export const DataRecordBody = styled.p`
+  font-size: 12px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+`
+export const ErrorText = styled.p`
+  color: red;
+`

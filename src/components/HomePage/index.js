@@ -8,20 +8,61 @@ import {
   FormHeading,
   InputField,
   UploadButton,
+  DataRecordsContainer,
+  DataRecordItem,
+  DataRecordTitle,
+  DataRecordBody,
+  ErrorText,
 } from './styledComponent'
 
 class HomePage extends Component {
-  state = {selectedFile: null, isFileValidated: false}
-
-  onFileChange = event => {
-    this.setState({selectedFile: event.target.files[0]})
+  state = {
+    selectedFile: null,
+    isFileValidated: false,
+    fileContent: '',
+    showError: false,
   }
 
-  onFileUpload = () => {
+  isValidJSON = () => {
+    const {fileContent} = this.state
+    try {
+      JSON.parse(fileContent)
+      this.setState({isFileValidated: true})
+    } catch (e) {
+      console.log('hj')
+      this.setState({isFileValidated: false})
+    }
+  }
+
+  getFileContent = () => {
     const {selectedFile} = this.state
-    const formData = new FormData()
-    formData.append('myFile', selectedFile, selectedFile.name)
-    console.log(selectedFile, Object.keys(selectedFile))
+    const reader = new FileReader()
+    if (selectedFile.type === 'application/json') {
+      reader.onload = e => {
+        const file = e.target.result
+        const lines = file.split(/\r\n|\n/)
+        this.setState({fileContent: lines.join('\n'), showError: false})
+      }
+    } else {
+      this.setState({showError: true})
+    }
+
+    reader.onerror = e => e.target.error.name
+    reader.readAsText(selectedFile)
+  }
+
+  onFileChange = event => {
+    this.setState({selectedFile: event.target.files[0]}, this.getFileContent)
+  }
+
+  onFileUpload = event => {
+    event.preventDefault()
+    const {selectedFile} = this.state
+    if (selectedFile.type === 'application/json') {
+      this.isValidJSON()
+    } else {
+      this.setState({isFileValidated: false, showError: true})
+    }
   }
 
   renderFileUploadSection = () => (
@@ -33,9 +74,22 @@ class HomePage extends Component {
   )
 
   renderFileRecords = () => {
-    const {isFileValidated} = this.state
+    const {isFileValidated, fileContent, showError} = this.state
     if (isFileValidated) {
-      return <h1>hi</h1>
+      const valuesArray = JSON.parse(fileContent)
+      return (
+        <DataRecordsContainer>
+          {valuesArray.map(item => (
+            <DataRecordItem key={item.id}>
+              <DataRecordTitle>{item.title}</DataRecordTitle>
+              <DataRecordBody>{item.body}</DataRecordBody>
+            </DataRecordItem>
+          ))}
+        </DataRecordsContainer>
+      )
+    }
+    if (showError) {
+      return <ErrorText>Select Valid JSON Data File</ErrorText>
     }
     return null
   }
