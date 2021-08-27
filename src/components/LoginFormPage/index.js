@@ -103,7 +103,7 @@ class LoginFormPage extends Component {
   }
 
   render() {
-    const jwtToken = Cookies.get('jwt_token')
+    const jwtToken = Cookies.get('jwt_token_stored')
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }

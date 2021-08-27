@@ -19,6 +19,7 @@ export const UploadFileForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 150px;
   @media screen and (min-width: 768px) {
     width: 30vw;
     border-radius: 10px;

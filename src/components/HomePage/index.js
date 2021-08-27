@@ -67,7 +67,7 @@ class HomePage extends Component {
 
   renderFileUploadSection = () => (
     <UploadFileForm onSubmit={this.onFileUpload}>
-      <FormHeading>Upload JSON file</FormHeading>
+      <FormHeading>Upload JSON File</FormHeading>
       <InputField type="file" onChange={this.onFileChange} />
       <UploadButton type="submit">Upload!</UploadButton>
     </UploadFileForm>

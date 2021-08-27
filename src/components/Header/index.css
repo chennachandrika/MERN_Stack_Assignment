@@ -4,6 +4,8 @@
   background-color: #0f172a;
   color: #ffffff;
   width: 100%;
+  top: 0;
+  position: fixed;
 }
 
 @media screen and (max-width: 768px) {
